@@ -1,4 +1,7 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:navigator_2/router/auth_guard.dart';
+import 'package:navigator_2/router/router.gr.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({
@@ -8,7 +11,6 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
       appBar: AppBar(
         backgroundColor: Colors.black,
         title: const Text("Profile Page"),
@@ -17,10 +19,31 @@ class ProfilePage extends StatelessWidget {
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               Text(
-                'Profile Page',
-                style: TextStyle(fontSize: 22),
+                'Authorized: $isAuthenticated',
+                style: const TextStyle(fontSize: 18),
+              ),
+              const SizedBox(height: 20,),
+              const Text(
+                'Authorized user',
+                style: TextStyle(fontSize: 18),
+              ),
+              TextButton(
+                style: TextButton.styleFrom(
+                  textStyle: const TextStyle(fontSize: 18),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  backgroundColor: Colors.greenAccent,
+                ),
+                onPressed: () {
+                  context.router.push(const ProfileSettingsRoute());
+                },
+                child: const Text(
+                  'next',
+                  style: TextStyle(
+                    color: Colors.black,
+                  ),
+                ),
               ),
             ],
           ),

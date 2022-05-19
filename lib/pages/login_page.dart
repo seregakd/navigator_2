@@ -1,21 +1,21 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:navigator_2/router/auth_guard.dart';
-import '../router/router.gr.dart';
 
+class LoginPage extends StatelessWidget {
+  final void Function(bool isLoggedIn)? onLoginResult;
 
-class FirstPage extends StatelessWidget {
-  const FirstPage({
+  const LoginPage({
     Key? key,
+    this.onLoginResult
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white70,
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: const Text("First Page"),
+        title: const Text("Login Page"),
       ),
       body: SafeArea(
         child: Center(
@@ -23,19 +23,13 @@ class FirstPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextButton(
+                onPressed: () => _login(context),
                 style: TextButton.styleFrom(
-                  textStyle: const TextStyle(fontSize: 20),
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  backgroundColor: Colors.greenAccent,
+                  backgroundColor: Colors.blueAccent,
                 ),
-                onPressed: () {
-                  context.router.push(const ProfileRoute());
-                },
                 child: const Text(
-                  'next',
-                  style: TextStyle(
-                    color: Colors.black,
-                  ),
+                    'Login',
+                    style: TextStyle(color: Colors.white,)
                 ),
               ),
             ],
@@ -43,5 +37,10 @@ class FirstPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  _login(BuildContext context) {
+    isAuthenticated = true;
+    onLoginResult?.call(true);
   }
 }

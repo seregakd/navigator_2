@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'router_page/router.gr.dart';
+import 'package:navigator_2/router/router.gr.dart';
+import 'router/auth_guard.dart';
 
 void main() {
   runApp(MyApp());
@@ -8,7 +8,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   MyApp({Key? key}) : super(key: key);
-  final _appRouter = AppRouter();
+  final _appRouter = AppRouter(authGuard: AuthGuard());
 
   @override
   Widget build(BuildContext context) {

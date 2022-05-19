@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:navigator_2/router/router.gr.dart';
 
 class SecondPage extends StatelessWidget {
   const SecondPage({

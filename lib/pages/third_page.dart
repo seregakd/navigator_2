@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
-import '../router_page/router.gr.dart';
+import '../router/router.gr.dart';
 
 class ThirdPage extends StatelessWidget {
   const ThirdPage({
