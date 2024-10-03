@@ -1,50 +1,49 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:navigator_2/pages/first_page.dart';
-import 'package:navigator_2/pages/home_page.dart';
-import 'package:navigator_2/pages/login_page.dart';
-import 'package:navigator_2/pages/next_page.dart';
-import 'package:navigator_2/pages/profile_page.dart';
-import 'package:navigator_2/pages/profile_settings_page.dart';
-import 'package:navigator_2/pages/second_page.dart';
-import 'package:navigator_2/pages/third_page.dart';
+import 'package:navigator_2/router/router.gr.dart';
 
 import 'auth_guard.dart';
 
-@MaterialAutoRouter(
-  replaceInRouteName: 'Page|Screen,Route',
-  routes: <AutoRoute>[
-    // AutoRoute(page: HomePage, initial: true),
-    AutoRoute(
-      path: '/home',
-      page: HomePage,
-      children: [
-        AutoRoute(
-          page: FirstPage,
-          path: 'first-page',
-        ),
-        AutoRoute(
-            name: 'SecondRoute',
-            path: 'second',
-            page: SecondPage,
-        ),
-        AutoRoute(page: ThirdPage),
-      ],
-      initial: true,
-    ),
-    AutoRoute(
-      page: ProfilePage,
-      guards: [AuthGuard]
-    ),
-    AutoRoute(
-      page: NextPage,
-    ),
-    AutoRoute(
-      page: LoginPage,
-    ),
-    AutoRoute(
-      page: ProfileSettingsPage,
-    ),
-  ],
-)
+@AutoRouterConfig(replaceInRouteName: 'Screen|Page,Route')
+class AppRouter extends RootStackRouter {
+  final authGuard = AuthGuard();
 
-class $AppRouter {}
+  @override
+  RouteType get defaultRouteType => RouteType.material();
+
+  @override
+  late final List<AutoRouteGuard> guards = [authGuard];
+
+  @override
+  List<AutoRoute> get routes => [
+        AutoRoute(
+          path: '/home',
+          page: HomeRoute.page,
+          initial: true,
+          children: [
+            AutoRoute(
+              page: FirstRoute.page,
+              path: 'first',
+            ),
+            AutoRoute(
+              path: 'second',
+              page: SecondRoute.page,
+            ),
+            AutoRoute(page: ThirdRoute.page),
+          ],
+        ),
+        AutoRoute(
+          page: ProfileRoute.page,
+          guards: [AuthGuard()],
+        ),
+        AutoRoute(
+          page: ProfileSettingsRoute.page,
+          guards: [AuthGuard()],
+        ),
+        AutoRoute(
+          page: NextRoute.page,
+        ),
+        AutoRoute(
+          page: LoginRoute.page,
+        ),
+      ];
+}

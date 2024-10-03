@@ -3,16 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:navigator_2/router/auth_guard.dart';
 import 'package:navigator_2/router/router.gr.dart';
 
+@RoutePage()
 class ProfilePage extends StatelessWidget {
-  const ProfilePage({
-    Key? key,
-  }) : super(key: key);
+  const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Theme.of(context).colorScheme.onPrimary,
         title: const Text("Profile Page"),
       ),
       body: SafeArea(
@@ -24,7 +23,9 @@ class ProfilePage extends StatelessWidget {
                 'Authorized: $isAuthenticated',
                 style: const TextStyle(fontSize: 18),
               ),
-              const SizedBox(height: 20,),
+              const SizedBox(
+                height: 20,
+              ),
               const Text(
                 'Authorized user',
                 style: TextStyle(fontSize: 18),

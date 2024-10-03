@@ -6,13 +6,16 @@ bool isAuthenticated = false;
 class AuthGuard extends AutoRouteGuard {
   @override
   void onNavigation(NavigationResolver resolver, StackRouter router) {
-    if (isAuthenticated) {
-      resolver.next(true);
+    if (!isAuthenticated &&
+        (resolver.route.name == ProfileRoute.name ||
+            resolver.route.name == ProfileSettingsRoute.name)) {
+      resolver.redirect(LoginRoute(
+        onLoginResult: (_) {
+          resolver.next();
+        },
+      ));
     } else {
-      router.push(LoginRoute(onLoginResult: (_){
-        resolver.next();
-        router.removeLast();
-      }));
+      resolver.next();
     }
   }
 }

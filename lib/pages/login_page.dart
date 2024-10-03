@@ -2,19 +2,20 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:navigator_2/router/auth_guard.dart';
 
+@RoutePage()
 class LoginPage extends StatelessWidget {
   final void Function(bool isLoggedIn)? onLoginResult;
 
   const LoginPage({
-    Key? key,
-    this.onLoginResult
-  }) : super(key: key);
+    super.key,
+    this.onLoginResult,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Theme.of(context).colorScheme.onPrimary,
         title: const Text("Login Page"),
       ),
       body: SafeArea(
@@ -28,8 +29,10 @@ class LoginPage extends StatelessWidget {
                   backgroundColor: Colors.blueAccent,
                 ),
                 child: const Text(
-                    'Login',
-                    style: TextStyle(color: Colors.white,)
+                  'Login',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                 ),
               ),
             ],

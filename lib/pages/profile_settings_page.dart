@@ -1,16 +1,16 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
+@RoutePage()
 class ProfileSettingsPage extends StatelessWidget {
-  const ProfileSettingsPage({
-    Key? key,
-  }) : super(key: key);
+  const ProfileSettingsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Theme.of(context).colorScheme.onPrimary,
         title: const Text('ProfileSettingsPage'),
       ),
       body: SafeArea(

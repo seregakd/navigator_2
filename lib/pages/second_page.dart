@@ -1,13 +1,13 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:navigator_2/router/router.gr.dart';
 
+@RoutePage()
 class SecondPage extends StatelessWidget {
   const SecondPage({
-    Key? key,
+    super.key,
     required this.title,
     required this.text,
-  }) : super(key: key);
+  });
 
   final String title;
   final int text;
@@ -17,7 +17,7 @@ class SecondPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white70,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Theme.of(context).colorScheme.onPrimary,
         title: const Text("Second Page"),
       ),
       body: SafeArea(

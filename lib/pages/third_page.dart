@@ -3,12 +3,13 @@ import 'package:flutter/material.dart';
 
 import '../router/router.gr.dart';
 
+@RoutePage()
 class ThirdPage extends StatelessWidget {
   const ThirdPage({
-    Key? key,
+    super.key,
     required this.title,
     required this.text,
-  }) : super(key: key);
+  });
 
   final String title;
   final String text;
@@ -18,7 +19,7 @@ class ThirdPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white70,
       appBar: AppBar(
-        backgroundColor: Colors.black,
+        backgroundColor: Theme.of(context).colorScheme.onPrimary,
         title: Text("Third Page"),
       ),
       body: SafeArea(
